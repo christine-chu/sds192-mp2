@@ -19,9 +19,13 @@ load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
 ```
 
 ## Initial clean up of the data 
 ```{r}
-contributions1 <- merge(candidates, contributions, by = "cand_id")
+contributions1 <- merge(candidates, contributions, by = "cand_id") # merged the candidate dataframe and contribution dataframe by the cand_id to see the name of the candidate
+select(cand_id, cand_name, cand_party_affiliation,  cand_election_yr, cand_office_state , name, transaction_amt)
 ````
