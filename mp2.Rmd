@@ -1,6 +1,13 @@
 ---
 title: "Mini-Project 2"
 author: "Christine"
+<<<<<<< HEAD
+=======
+=======
+title: "ChineseDataNerds- miniproject 2"
+author: "Yuri Furukawa"
+>>>>>>> add36172004010bb18a378e675eb8bc32b66e980
+>>>>>>> a3f830882ec2e6b07c7c2f6dae395ec09b631403
 date: "October 31, 2017"
 output: html_document
 --- 
