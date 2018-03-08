@@ -1,9 +1,9 @@
-title: "ChineseDataNerds- miniproject 2"
-author: "Your Name Here"
->>>>>>> add36172004010bb18a378e675eb8bc32b66e980
+---
+title: "Mini-Project 2"
+author: "Christine"
 date: "October 31, 2017"
 output: html_document
----
+--- 
 
 
 ## Loading the data
