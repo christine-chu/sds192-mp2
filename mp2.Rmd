@@ -28,8 +28,9 @@ library(ggplot2)
 ```{r}
 contributions1 <- merge(candidates, contributions, by = "cand_id") # merged the candidate dataframe and contribution dataframe by the cand_id to see the name of the candidate
 
-house_elections1 <- rename(house_elections, cand_id = fec_id)
+house_elections1 <- rename(house_elections, cand_id = fec_id) # renamed the row 
 
+cont_winner <- 
 contributions1 %>%
   inner_join(house_elections1, by = "cand_id") %>%
   View()
