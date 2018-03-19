@@ -30,10 +30,9 @@ contributions1 <- merge(candidates, contributions, by = "cand_id") # merged the 
 
 house_elections1 <- rename(house_elections, cand_id = fec_id) # renamed the row 
 
-cont_winner <- 
-contributions1 %>%
+cont_winner <- contributions1 %>%
   inner_join(house_elections1, by = "cand_id") %>%
-  View()
+  View() #cannot assign this table to a new dataframe. Are we supposed to write a function for this to replicate it. cont_winner is empty 
 
 new_cont <- contributions1 %>%
   select(cand_id, cand_name, cand_party_affiliation,  cand_election_yr, cand_office_state , name, transaction_amt) # there are a lot of contributions to the same representative. 
