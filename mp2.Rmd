@@ -40,6 +40,9 @@ data <- data %>%
 
 contributions1 %>% group_by(cand_party_affiliation) %>% summarize(num_type = n()) %>% arrange(desc(num_type)) %>% head(4)
 
-
+contributions1 %>%
+  group_by(cand_name) %>%
+  summarise(n_row = n(), amt = sum(transaction_amt))%>%
+   View()
 
 ````
