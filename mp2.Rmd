@@ -51,4 +51,19 @@ cont_winner %>%
   filter(transaction_amt > 0 ) %>%
   group_by(cand_name) 
   
-````
+```
+
+```{r}
+#making a function to look at the names of the candidates #filtering the large dataframe 
+look_name <- function(name_arg) {
+    cont_winner %>%
+    filter(cand_name == name_arg)
+  }
+
+look_name(name_arg = "ROBY, MARTHA")
+```
+
+```{r}
+robymartha <- look_name(name_arg = "ROBY, MARTHA")
+```
+
