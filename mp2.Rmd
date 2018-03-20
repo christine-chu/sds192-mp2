@@ -49,6 +49,17 @@ contributions1 %>% group_by(cand_party_affiliation) %>% summarize(num_type = n()
 cont_winner %>%
   select(cand_id, cand_name, cand_party_affiliation, transaction_amt, ge_winner) %>%
   filter(transaction_amt > 0 ) %>%
-  group_by(cand_name) 
+  group_by(cand_name) %>%
+  View()
+
+party <- function(name_arg) {
+  cont_winner %>%
+    filter(cand_party_affiliation == name_arg) %>%
+    filter(ge_winner == "W") %>%
+    select(transaction_amt, ge_winner) %>%
+    group_by(transaction_amt, ge_winner) %>%
+    summarise(trans = sum(transaction_amt), win = n()) %>%
+    arrange(desc(transaction_amt))
+}
   
 ````
