@@ -65,7 +65,7 @@ party <- function(name_arg) {
 party2 <- function(name_arg) {
   cont_winner %>%
     filter(cand_party_affiliation == name_arg) %>%
-    filter(ge_winner == "W") %>%
+    filter(ge_winner == "N") %>%
     group_by(transaction_amt, ge_winner) %>%
     summarise(trans = sum(transaction_amt), win = n()) %>%
     arrange(desc(transaction_amt))
@@ -76,12 +76,14 @@ cont_winner %>%
   summarise( nrow = n()) %>%
   arrange(desc(nrow)) %>%
   head (5)
+<<<<<<< Updated upstream
 
 affiliation <- c("DEM", "REP", "DFL", "UNK", "OTH")
  lapply(affiliation, FUN = party2)
   
+=======
+>>>>>>> Stashed changes
 
-```
 cont_winner2 <- cont_winner %>%
   filter(cand_party_affiliation %in% c("REP", "DEM", "DFL", "UNK", "OTH"))
 
@@ -112,5 +114,4 @@ look_name(name_arg = "ROBY, MARTHA")
 ```{r}
 robymartha <- look_name(name_arg = "ROBY, MARTHA")
 ```
-
 
