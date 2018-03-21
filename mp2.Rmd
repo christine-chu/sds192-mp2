@@ -76,6 +76,9 @@ cont_winner %>%
   summarise( nrow = n()) %>%
   arrange(desc(nrow)) %>%
   head (5)
+
+affiliation <- c("DEM", "REP", "DFL", "UNK", "OTH")
+ lapply(affiliation, FUN = party2)
   
 
 ```
