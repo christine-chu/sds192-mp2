@@ -65,7 +65,7 @@ party <- function(name_arg) {
 party2 <- function(name_arg) {
   cont_winner %>%
     filter(cand_party_affiliation == name_arg) %>%
-    filter(ge_winner == "W") %>%
+    filter(ge_winner == "N") %>%
     group_by(transaction_amt, ge_winner) %>%
     summarise(trans = sum(transaction_amt), win = n()) %>%
     arrange(desc(transaction_amt))
@@ -78,6 +78,16 @@ cont_winner %>%
   head (5)
   
 
+```
+
+```{r message = FALSE}
+party_plot_bar <- ggplot(tidy_steak_filtered, aes(x = steak_prep, fill = win)) +
+  geom_bar(position = "dodge") + 
+  labs( x = "Party Affiliation", y = "Transaction Amount") + 
+  scale_fill_discrete(name = "Party") + 
+  labs(title = "Does transaction amount affect win rate?", subtitle = "Exploring the relationship between contributions and election results") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+party_plot_bar
 ```
 
 ```{r}
