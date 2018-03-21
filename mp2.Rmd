@@ -9,7 +9,9 @@ author: "Yuri Furukawa"
 >>>>>>> add36172004010bb18a378e675eb8bc32b66e980
 >>>>>>> a3f830882ec2e6b07c7c2f6dae395ec09b631403
 date: "October 31, 2017"
-output: html_document
+output:
+  html_document:
+    code_folding: hide
 --- 
 
 
@@ -76,13 +78,10 @@ cont_winner %>%
   summarise( nrow = n()) %>%
   arrange(desc(nrow)) %>%
   head (5)
-<<<<<<< Updated upstream
 
 affiliation <- c("DEM", "REP", "DFL", "UNK", "OTH")
  lapply(affiliation, FUN = party2)
   
-=======
->>>>>>> Stashed changes
 
 cont_winner2 <- cont_winner %>%
   filter(cand_party_affiliation %in% c("REP", "DEM", "DFL", "UNK", "OTH"))
@@ -90,12 +89,15 @@ cont_winner2 <- cont_winner %>%
 ```
 
 ```{r message = FALSE}
+positions <- c("DEM","DFL","REP","UNK","OTH")
+
 party_plot_bar <- ggplot(cont_winner2, aes(x = cand_party_affiliation, y = transaction_amt, fill = ge_winner)) +
-  geom_bar(position = "dodge", stat = "identity") + 
+  geom_bar(position = "dodge", stat = "identity") + #how to change the bar - change the factor levels so that we can change the order in a list
   labs( x = "Party Affiliation", y = "Transaction Amount") + 
   scale_fill_discrete(name = "Election Results", labels = c("Lose", "Win")) +
+  scale_x_discrete(limits = positions)+
   scale_y_continuous(limits = c(0, 3000000
-), breaks = seq(0, 3000000, 500000), expand = c(0,0)) + 
+), breaks = seq(0, 3000000, 500000), expand = c(0,0), labels = c("0M","0.5M","1M","1.5M","2M","2.5M","3M")) + 
   labs(title = "Does transaction amount affect win rate?", subtitle = "Exploring the relationship between contributions and election results") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
 party_plot_bar
