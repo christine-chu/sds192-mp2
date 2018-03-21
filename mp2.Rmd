@@ -93,7 +93,7 @@ cont_winner2 <- cont_winner %>%
 party_plot_bar <- ggplot(cont_winner2, aes(x = cand_party_affiliation, y = transaction_amt, fill = ge_winner)) +
   geom_bar(position = "dodge", stat = "identity") + 
   labs( x = "Party Affiliation", y = "Transaction Amount") + 
-  scale_fill_discrete(name = "Election Results") +
+  scale_fill_discrete(name = "Election Results", labels = c("Lose", "Win")) +
   scale_y_continuous(limits = c(0, 3000000
 ), breaks = seq(0, 3000000, 500000), expand = c(0,0)) + 
   labs(title = "Does transaction amount affect win rate?", subtitle = "Exploring the relationship between contributions and election results") +
