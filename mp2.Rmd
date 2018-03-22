@@ -18,6 +18,7 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+wordcountaddin::text_stats("mp2.Rmd")
 ```
 
 ## Initial clean up of the data 
