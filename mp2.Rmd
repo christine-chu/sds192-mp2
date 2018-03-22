@@ -1,14 +1,7 @@
 ---
 title: "Mini-Project 2"
-author: "Christine"
-<<<<<<< HEAD
-=======
-=======
-title: "ChineseDataNerds- miniproject 2"
-author: "Yuri Furukawa"
->>>>>>> add36172004010bb18a378e675eb8bc32b66e980
->>>>>>> a3f830882ec2e6b07c7c2f6dae395ec09b631403
-date: "October 31, 2017"
+author: "Christine, Nybria, Yuri"
+date: "March 21, 2018"
 output:
   html_document:
     code_folding: hide
@@ -40,20 +33,13 @@ cont_winner <- contributions1 %>%
 new_cont <- contributions1 %>%
   select(cand_id, cand_name, cand_party_affiliation,  cand_election_yr, cand_office_state , name, transaction_amt) # there are a lot of contributions to the same representative. 
 
-#recoding factors
-data <- data %>%
-  mutate( var = case_when(
-    "REP" = "R",
-    "DEM" = "D",
-    TRUE - var))
 
 contributions1 %>% group_by(cand_party_affiliation) %>% summarize(num_type = n()) %>% arrange(desc(num_type)) %>% head(4)
 
 cont_winner %>%
   select(cand_id, cand_name, cand_party_affiliation, transaction_amt, ge_winner) %>%
   filter(transaction_amt > 0 ) %>% #remove negative transactions
-  group_by(cand_name) %>%
-  View()
+  group_by(cand_name)
 
 party <- function(name_arg) {
   cont_winner %>%
