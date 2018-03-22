@@ -24,6 +24,7 @@ load("contributions.rda")
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
+library(ggthemes)
 ```
 
 ## Initial clean up of the data 
@@ -50,7 +51,7 @@ contributions1 %>% group_by(cand_party_affiliation) %>% summarize(num_type = n()
 
 cont_winner %>%
   select(cand_id, cand_name, cand_party_affiliation, transaction_amt, ge_winner) %>%
-  filter(transaction_amt > 0 ) %>%
+  filter(transaction_amt > 0 ) %>% #remove negative transactions
   group_by(cand_name) %>%
   View()
 
@@ -88,18 +89,25 @@ cont_winner2 <- cont_winner %>%
 
 ```
 
+```{r}
+cont_winner2$ge_winner <- factor(cont_winner2$ge_winner, levels = c("W", "N"))
+
+levels(cont_winner2$ge_winner)
+```
+
 ```{r message = FALSE}
-positions <- c("DEM","DFL","REP","UNK","OTH")
+positions <- c("DEM","REP","DFL","UNK","OTH")
 
 party_plot_bar <- ggplot(cont_winner2, aes(x = cand_party_affiliation, y = transaction_amt, fill = ge_winner)) +
   geom_bar(position = "dodge", stat = "identity") + #how to change the bar - change the factor levels so that we can change the order in a list
-  labs( x = "Party Affiliation", y = "Transaction Amount") + 
-  scale_fill_discrete(name = "Election Results", labels = c("Lose", "Win")) +
+  labs( x = "Party Affiliation", y = "Transaction Amount (millions)") + 
+  scale_fill_discrete(name = "Election Results", labels = c("Win", "Lose")) +
   scale_x_discrete(limits = positions)+
-  scale_y_continuous(limits = c(0, 3000000
-), breaks = seq(0, 3000000, 500000), expand = c(0,0), labels = c("0M","0.5M","1M","1.5M","2M","2.5M","3M")) + 
+  scale_y_continuous(limits = c(0, 2500000
+), breaks = seq(0, 2500000, 500000), expand = c(0,0), labels = c("0M","0.5M","1M","1.5M","2M","2.5M")) + 
   labs(title = "Does transaction amount affect win rate?", subtitle = "Exploring the relationship between contributions and election results") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_economist_white() + scale_color_economist()
 party_plot_bar
 ```
 
