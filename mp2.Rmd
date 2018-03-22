@@ -28,7 +28,7 @@ library(ggthemes)
 ```
 
 ## Initial clean up of the data 
-```{r}
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
 contributions1 <- merge(candidates, contributions, by = "cand_id") # merged the candidate dataframe and contribution dataframe by the cand_id to see the name of the candidate
 
 house_elections1 <- rename(house_elections, cand_id = fec_id) # renamed the row 
@@ -89,39 +89,27 @@ cont_winner2 <- cont_winner %>%
 
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
 cont_winner2$ge_winner <- factor(cont_winner2$ge_winner, levels = c("W", "N"))
 
 levels(cont_winner2$ge_winner)
 ```
 
-```{r message = FALSE}
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
 positions <- c("DEM","REP","DFL","UNK","OTH")
 
 party_plot_bar <- ggplot(cont_winner2, aes(x = cand_party_affiliation, y = transaction_amt, fill = ge_winner)) +
   geom_bar(position = "dodge", stat = "identity") + #how to change the bar - change the factor levels so that we can change the order in a list
   labs( x = "Party Affiliation", y = "Transaction Amount (millions)") + 
   scale_fill_discrete(name = "Election Results", labels = c("Win", "Lose")) +
-  scale_x_discrete(limits = positions)+
-  scale_y_continuous(limits = c(0, 2500000
-), breaks = seq(0, 2500000, 500000), expand = c(0,0), labels = c("0M","0.5M","1M","1.5M","2M","2.5M")) + 
+  scale_x_discrete(limits = positions) +
+  scale_y_continuous(limits = c(0, 2500000)
+, breaks = seq(0, 2500000, 500000), expand = c(0,0), labels = c("0M","0.5M","1M","1.5M","2M","2.5M")) + 
   labs(title = "Does transaction amount affect win rate?", subtitle = "Exploring the relationship between contributions and election results") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   theme_economist_white() + scale_color_economist()
+
 party_plot_bar
 ```
 
-```{r}
-#making a function to look at the names of the candidates #filtering the large dataframe 
-look_name <- function(name_arg) {
-    cont_winner %>%
-    filter(cand_name == name_arg)
-  }
-
-look_name(name_arg = "ROBY, MARTHA")
-```
-
-```{r}
-robymartha <- look_name(name_arg = "ROBY, MARTHA")
-```
 
