@@ -18,6 +18,7 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(wordcountaddin)
 wordcountaddin::text_stats("mp2.Rmd")
 ```
 
@@ -114,4 +115,4 @@ The data graphic is a bar graph that illustrates total transaction amounts for 5
 
 The most popular 5 parties are Democratic party, Republican party, Minnesota Democratic-Farmer-Labor-Party, Unknown, and Others. The graphic concludes that there is not enough information to conclude that high financial contributions does not necessarily contribute to a win. Data wrangling concludes that our hypothesis was false, One can observe there is no relationship shown between election results and contributions Losses under the Republican party, for example, show higher total contribution of 1 million dollars versus total transaction amounts for Republican wins show a total contribution of about 800,000 thousand dollars. On the Other hand the Democratic party shows that the total transaction for candidates who won is 2.3 million in contributions versus transactions for Democratic losses of 1.3 million.
 
-
+[^1]: link to the GitHub repository:  https://github.com/christine-chu/sds192-mp2
