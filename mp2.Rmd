@@ -1,5 +1,5 @@
 ---
-title: "Mini-Project 2"
+title: "Money and Politics"
 author: "Christine, Nybria, Yuri"
 date: "March 21, 2018"
 output:
@@ -81,16 +81,17 @@ cont_winner2 <- cont_winner %>%
 ```
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
+#This will change the ge_winner factors around so that win will appear as the first bar with lose following. 
 cont_winner2$ge_winner <- factor(cont_winner2$ge_winner, levels = c("W", "N"))
 
 levels(cont_winner2$ge_winner)
 ```
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
-positions <- c("DEM","REP","DFL","UNK","OTH")
+positions <- c("DEM","REP","DFL","UNK","OTH") #This will change the positon of the factors on the plot 
 
 party_plot_bar <- ggplot(cont_winner2, aes(x = cand_party_affiliation, y = transaction_amt, fill = ge_winner)) +
-  geom_bar(position = "dodge", stat = "identity") + #how to change the bar - change the factor levels so that we can change the order in a list
+  geom_bar(position = "dodge", stat = "identity") + 
   labs( x = "Party Affiliation", y = "Transaction Amount (millions)") + 
   scale_fill_discrete(name = "Election Results", labels = c("Win", "Lose")) +
   scale_x_discrete(limits = positions) +
