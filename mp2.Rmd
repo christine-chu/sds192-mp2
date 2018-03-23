@@ -18,13 +18,12 @@ library(ggplot2)
 library(ggthemes)
 wordcountaddin::text_stats("mp2.Rmd")
 ```
-<<<<<<< HEAD
+
 ## Does Money Really Wins the Race?
 
 What we wanted to find whether or not there is a relationship between money and a candidate's chances of winning. Our hypothesis was that the more money a candidate received the more likely they were to win in an election. Our first step with data wrangling creating a new data frame, `Contributions 1`, which merged candidate id with candidate name. Since we wanted to observe total transaction for each candidate, we took the next step to inner join our new data frame,  `Contributions 1` with one of the original data frames `house_elections`.
-=======
+
 What we wanted to find weather or not there is a relationship between money and a candidate's chances of winning. Our hypothesis was that the more money a candidate received the more likely they were to win in a election. Our first step with data wrangling was to create create a new data frame, `Contributions 1`, which merged candidate id with candidate name. Since we wanted to observe total transaction for each candidate, we took the next step to inner join our new data frame,  `Contributions 1` with one of the original data frames `house_elections`.
->>>>>>> 04625fc7bd42fca44b8d9e6eda32c14343dffeb9
 
 Our first step to analyzing our hypothesis, was developing a function that filtered transaction amounts (`transaction_amt`) and wins and losses (`ge_winner`), however, we concluded that finding transaction amounts for each name was too exhaustive, so we changed our focus from candidate name and transaction amount  to party affiliation and transaction amount. 
 
