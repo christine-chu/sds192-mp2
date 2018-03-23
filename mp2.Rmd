@@ -18,7 +18,6 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
-library(wordcountaddin)
 wordcountaddin::text_stats("mp2.Rmd")
 ```
 
